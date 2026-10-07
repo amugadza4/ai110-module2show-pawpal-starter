@@ -48,8 +48,9 @@ No, my design did not change during the initial implementation. I kept the four 
 **b. Tradeoffs**
 
 - Describe one tradeoff your scheduler makes.
+One tradeoff my scheduler makes is using exact time matches to detect conflicts. This means that two tasks are only considered a conflict if they are scheduled at the same time.
 - Why is that tradeoff reasonable for this scenario?
-
+This tradeoff is reasonable because PawPal+ currently focuses on scheduling tasks by their scheduled time and does not include task durations. Using exact time matches keeps the conflict detection simple while still identifying tasks that are scheduled at the same time.
 ---
 
 ## 3. AI Collaboration

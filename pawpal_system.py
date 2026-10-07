@@ -11,8 +11,24 @@ class Task:
     completed: bool = False
 
     def mark_complete(self):
-        """Mark the task as completed."""
+        """Mark the task as completed and create the next recurring occurrence."""
         self.completed = True
+
+        if self.frequency == "Daily":
+            return Task(
+                self.description,
+                self.time,
+                self.frequency
+            )
+
+        if self.frequency == "Weekly":
+            return Task(
+                self.description,
+                self.time,
+                self.frequency
+            )
+
+        return None
 
 
 @dataclass
@@ -62,9 +78,23 @@ class Scheduler:
         """Sort tasks by their scheduled time."""
         return sorted(self.get_all_tasks(), key=lambda task: task.time)
 
-    def filter_tasks(self):
-        """Filter tasks based on selected criteria."""
-        return self.get_all_tasks()
+    def filter_tasks(self, pet_name=None, completed=None):
+        """Filter tasks by pet name or completion status."""
+        tasks = self.get_all_tasks()
+
+        if pet_name is not None:
+            filtered_tasks = []
+
+            for pet in self.owner.pets:
+                if pet.name == pet_name:
+                    filtered_tasks.extend(pet.get_tasks())
+
+            tasks = filtered_tasks
+
+        if completed is not None:
+            tasks = [task for task in tasks if task.completed == completed]
+
+        return tasks
 
     def detect_conflicts(self):
         """Detect tasks scheduled at the same time."""
