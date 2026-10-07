@@ -43,32 +43,34 @@ pip install -r requirements.txt
 7. Refine UML so it matches what you actually built.
 
 ## 🖥️ Sample Output
+The current CLI displays the pet schedule and sorts tasks by their scheduled time.
 
-Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
+python3 main.py
 
-```
-# e.g.:
-# Daily plan for Biscuit (Golden Retriever):
-#   08:00 — Morning walk (30 min) [priority: high]
-#   09:00 — Feeding (10 min) [priority: high]
-#   ...
-```
+Example output:
+
+PawPal+ Pet Schedule
+--------------------
+8:00 AM - Feed Buddy (Daily)
+8:00 AM - Give Luna medication (Daily)
+9:00 AM - Walk Buddy (Daily)
 
 ## 🧪 Testing PawPal+
+Run the full test suite with:
 
-```bash
-# Run the full test suite:
-pytest
+python3 -m pytest
 
-# Run with coverage:
-pytest --cov
-```
+The current tests verify that tasks can be marked as complete and that tasks can be added to a pet.
 
 Sample test output:
 
-```
-# Paste your pytest output here
-```
+=============== test session starts ================
+platform darwin -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0
+collected 2 items
+
+tests/test_pawpal_system.py ..               [100%]
+
+================ 2 passed in 0.01s =================
 
 ## 📐 Smarter Scheduling
 

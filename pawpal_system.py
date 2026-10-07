@@ -12,7 +12,7 @@ class Task:
 
     def mark_complete(self):
         """Mark the task as completed."""
-        pass
+        self.completed = True
 
 
 @dataclass
@@ -25,11 +25,11 @@ class Pet:
 
     def add_task(self, task: Task):
         """Add a task to the pet's task list."""
-        pass
+        self.tasks.append(task)
 
     def get_tasks(self):
         """Return the pet's tasks."""
-        pass
+        return self.tasks
 
 
 class Owner:
@@ -41,11 +41,11 @@ class Owner:
 
     def add_pet(self, pet: Pet):
         """Add a pet to the owner's pet list."""
-        pass
+        self.pets.append(pet)
 
     def get_all_tasks(self):
         """Return all tasks belonging to the owner's pets."""
-        pass
+        return [task for pet in self.pets for task in pet.get_tasks()]
 
 
 class Scheduler:
@@ -56,16 +56,24 @@ class Scheduler:
 
     def get_all_tasks(self):
         """Retrieve all tasks from the owner's pets."""
-        pass
+        return self.owner.get_all_tasks()
 
     def sort_by_time(self):
         """Sort tasks by their scheduled time."""
-        pass
+        return sorted(self.get_all_tasks(), key=lambda task: task.time)
 
     def filter_tasks(self):
         """Filter tasks based on selected criteria."""
-        pass
+        return self.get_all_tasks()
 
     def detect_conflicts(self):
         """Detect tasks scheduled at the same time."""
-        pass
+        tasks = self.get_all_tasks()
+        conflicts = []
+
+        for i, task in enumerate(tasks):
+            for other_task in tasks[i + 1:]:
+                if task.time == other_task.time:
+                    conflicts.append((task, other_task))
+
+        return conflicts

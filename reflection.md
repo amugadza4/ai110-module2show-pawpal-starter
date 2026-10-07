@@ -25,13 +25,16 @@ Methods: get all tasks,sort tasks, filter tasks,detect conflicts
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+My initial UML design was based on four main classes: Owner, Pet, Task, and Scheduler. The design shows how the owner manages their pets, each pet has tasks, and the scheduler manages the tasks for the owner.
 
 - What classes did you include, and what responsibilities did you assign to each?
+I included four classes: Owner, Pet, Task, and Scheduler. The Owner class represents the person using PawPal+ and manages their pets. The Pet class stores information about each pet and their assigned tasks. The Task class represents individual pet-care activities and stores information such as the description, time, frequency, and completion status. The Scheduler class organizes the owner's tasks and handles functions such as sorting tasks, filtering tasks, and detecting scheduling conflicts.
 
 **b. Design changes**
 
 - Did your design change during implementation?
 - If yes, describe at least one change and why you made it.
+No, my design did not change during the initial implementation. I kept the four classes and their original responsibilities from my UML design while creating the class skeletons. I may make changes later as I add more functionality and identify areas that could be improved.
 
 ---
 
