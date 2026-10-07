@@ -103,15 +103,75 @@ The test suite covers the core functionality of the PawPal+ system, including ta
 | Conflict handling | `Scheduler.detect_conflicts()` | Identifies tasks scheduled at the same time.                            |
 | Recurring tasks   | `Task.mark_complete()`         | Creates a new task for Daily and Weekly recurring tasks when completed. |
 
+## ✨ Features
+
+PawPal+ includes the following scheduling features:
+
+- **Pet Management** — Add pets and store basic pet information.
+- **Task Management** — Add pet-care tasks with a scheduled time and frequency.
+- **Sorting by Time** — Tasks are automatically sorted by their scheduled time.
+- **Task Filtering** — View tasks by pet or completion status.
+- **Recurring Tasks** — Completing a Daily or Weekly task creates a new incomplete recurring task.
+- **Conflict Detection** — The scheduler identifies tasks that are scheduled for the same time.
+- **Streamlit UI** — Users can add pets, create tasks, view their schedule, and receive conflict warnings through the web interface.
+
 ## 📸 Demo Walkthrough
 
-The PawPal+ CLI demonstrates the scheduling features through the following steps:
+The PawPal+ Streamlit interface allows a pet owner to manage their pets and organize their care schedule.
 
-1. Create an owner and add pets to the system.
-2. Add pet-care tasks with scheduled times and frequencies.
-3. Mark a recurring task as complete, which creates a new incomplete occurrence.
-4. View the schedule with tasks sorted by time and filter tasks by pet or completion status.
-5. Detect scheduling conflicts when multiple tasks are scheduled at the same time.
+### 1. Add a Pet
 
-**Screenshot or video** *(optional)*: Add a screenshot or link to a demo video here.
+The user enters a pet's name and selects its species. After selecting **Add Pet**, the pet is added to the owner's PawPal+ profile.
 
+### 2. Add a Task
+
+After adding a pet, the user can select the pet and create a task. Each task includes:
+
+- Task description
+- Scheduled time
+- Frequency
+
+For example, a user could add **Feed Buddy** at **8:00 AM** with a Daily frequency.
+
+### 3. View the Sorted Schedule
+
+PawPal+ uses the `Scheduler.sort_by_time()` method to organize tasks by their scheduled time. The Streamlit interface displays the sorted tasks in a table so the owner can easily see what needs to be completed.
+
+### 4. Identify Schedule Conflicts
+
+PawPal+ uses `Scheduler.detect_conflicts()` to identify tasks scheduled at the same time.
+
+When a conflict is found, the UI displays a warning explaining which tasks overlap. This helps the pet owner recognize scheduling issues before following the daily plan.
+
+### 5. View Completed Tasks
+
+The UI uses `Scheduler.filter_tasks(completed=True)` to display tasks that have already been completed.
+
+### 6. Example CLI Output
+
+The same scheduling logic can also be demonstrated through the command-line interface by running:
+
+```bash
+python3 main.py
+
+PawPal+ Pet Schedule
+--------------------
+
+Sorted tasks:
+8:00 AM - Feed Buddy - Completed: True
+8:00 AM - Feed Buddy - Completed: False
+8:00 AM - Give Luna medication - Completed: False
+9:00 AM - Walk Buddy - Completed: False
+
+Completed tasks:
+8:00 AM - Feed Buddy
+
+Buddy's tasks:
+9:00 AM - Walk Buddy
+8:00 AM - Feed Buddy
+8:00 AM - Feed Buddy
+
+Task conflicts:
+Conflict: Feed Buddy and Feed Buddy are both scheduled at 8:00 AM
+Conflict: Feed Buddy and Give Luna medication are both scheduled at 8:00 AM
+Conflict: Feed Buddy and Give Luna medication are both scheduled at 8:00 AM
