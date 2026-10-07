@@ -6,9 +6,9 @@ You are building **PawPal+**, a Streamlit app that helps a pet owner plan care t
 
 A busy pet owner needs help staying consistent with pet care. They want an assistant that can:
 
-- Track pet care tasks (walks, feeding, meds, enrichment, grooming, etc.)
-- Consider constraints (time available, priority, owner preferences)
-- Produce a daily plan and explain why it chose that plan
+* Track pet care tasks (walks, feeding, meds, enrichment, grooming, etc.)
+* Consider constraints (time available, priority, owner preferences)
+* Produce a daily plan and explain why it chose that plan
 
 Your job is to design the system first (UML), then implement the logic in Python, then connect it to the Streamlit UI.
 
@@ -16,11 +16,11 @@ Your job is to design the system first (UML), then implement the logic in Python
 
 Your final app should:
 
-- Let a user enter basic owner + pet info
-- Let a user add/edit tasks (duration + priority at minimum)
-- Generate a daily schedule/plan based on constraints and priorities
-- Display the plan clearly (and ideally explain the reasoning)
-- Include tests for the most important scheduling behaviors
+* Let a user enter basic owner + pet info
+* Let a user add/edit tasks (duration + priority at minimum)
+* Generate a daily schedule/plan based on constraints and priorities
+* Display the plan clearly (and ideally explain the reasoning)
+* Include tests for the most important scheduling behaviors
 
 ## Getting started
 
@@ -43,56 +43,75 @@ pip install -r requirements.txt
 7. Refine UML so it matches what you actually built.
 
 ## 🖥️ Sample Output
+
 The current CLI displays the pet schedule and sorts tasks by their scheduled time.
 
+Run the CLI with:
+
+```bash
 python3 main.py
+```
 
 Example output:
 
+```text
 PawPal+ Pet Schedule
 --------------------
 8:00 AM - Feed Buddy (Daily)
 8:00 AM - Give Luna medication (Daily)
 9:00 AM - Walk Buddy (Daily)
+```
 
 ## 🧪 Testing PawPal+
+
 Run the full test suite with:
 
+```bash
 python3 -m pytest
+```
 
-The current tests verify that tasks can be marked as complete and that tasks can be added to a pet.
+The test suite verifies:
+
+* Tasks can be marked as complete.
+* Tasks can be added to a pet.
+* Tasks are sorted by scheduled time.
+* Completing a Daily task creates a new incomplete recurring task.
+* Scheduling conflicts are detected when tasks have the same time.
 
 Sample test output:
 
+```text
 =============== test session starts ================
 platform darwin -- Python 3.12.1, pytest-9.1.1, pluggy-1.6.0
-collected 2 items
+collected 5 items
 
-tests/test_pawpal_system.py ..               [100%]
+tests/test_pawpal_system.py .....            [100%]
 
-================ 2 passed in 0.01s =================
+================ 5 passed in 0.01s =================
+```
+
+**Confidence Level:** ⭐⭐⭐⭐⭐
+
+The test suite covers the core functionality of the PawPal+ system, including task management, sorting, recurring tasks, and conflict detection. The five passing tests give me confidence that the main scheduling functionality is working as expected.
 
 ## 📐 Smarter Scheduling
 
-> Fill in once you've implemented scheduling logic.
-
-## 📐 Smarter Scheduling
-
-| Feature | Method(s) | Notes |
-|---------|-----------|-------|
-| Task sorting | `Scheduler.sort_by_time()` | Sorts tasks by their scheduled time. |
-| Filtering | `Scheduler.filter_tasks()` | Filters tasks by pet name or completion status. |
-| Conflict handling | `Scheduler.detect_conflicts()` | Identifies tasks scheduled at the same time. |
-| Recurring tasks | `Task.mark_complete()` | Creates a new task for Daily and Weekly recurring tasks when completed. |
+| Feature           | Method(s)                      | Notes                                                                   |
+| ----------------- | ------------------------------ | ----------------------------------------------------------------------- |
+| Task sorting      | `Scheduler.sort_by_time()`     | Sorts tasks by their scheduled time.                                    |
+| Filtering         | `Scheduler.filter_tasks()`     | Filters tasks by pet name or completion status.                         |
+| Conflict handling | `Scheduler.detect_conflicts()` | Identifies tasks scheduled at the same time.                            |
+| Recurring tasks   | `Task.mark_complete()`         | Creates a new task for Daily and Weekly recurring tasks when completed. |
 
 ## 📸 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
+The PawPal+ CLI demonstrates the scheduling features through the following steps:
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Create an owner and add pets to the system.
+2. Add pet-care tasks with scheduled times and frequencies.
+3. Mark a recurring task as complete, which creates a new incomplete occurrence.
+4. View the schedule with tasks sorted by time and filter tasks by pet or completion status.
+5. Detect scheduling conflicts when multiple tasks are scheduled at the same time.
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+**Screenshot or video** *(optional)*: Add a screenshot or link to a demo video here.
+
