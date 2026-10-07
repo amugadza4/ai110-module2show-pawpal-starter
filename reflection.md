@@ -1,10 +1,31 @@
 # PawPal+ Project Reflection
 
 ## 1. System Design
+Three Core Actions
 
+The three core actions a user should be able to perform are:
+
+Add a pet: The user should be able to add a pet and enter the pet's information.
+Schedule a task: The user should be able to create tasks for their pets, such as feedings, walks, medications, or appointments.
+View the pet schedule: The user should be able to view the tasks scheduled for their pets and see what needs to be completed.
+
+The Four Main Building Blocks
+Owner: The person using PawPal+.
+Attributes: Name,pets 
+Methods: add a pet, get all pets, get all tasks
+Pet: The owner's dog, cat, or other pet.
+Attributes: name,species,age,tasks
+Methods: add a task, get tasks
+Task: Something that needs to be completed for a pet.
+Attributes: description, time, frequency, completion status
+Mehods: mark complete
+Scheduler: The system that organizes the tasks.
+Attributes: owner
+Methods: get all tasks,sort tasks, filter tasks,detect conflicts
 **a. Initial design**
 
 - Briefly describe your initial UML design.
+
 - What classes did you include, and what responsibilities did you assign to each?
 
 **b. Design changes**
